@@ -20,6 +20,17 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    firebase: {
+      apiKey: "AIzaSyCzBnpWBP2V5XXZ70jcP7TYG6KVUwb7-m0",
+      authDomain: "nueva-vida-6e4e5.firebaseapp.com",
+      databaseURL: "https://nueva-vida-6e4e5.firebaseio.com",
+      projectId: "nueva-vida-6e4e5",
+      storageBucket: "nueva-vida-6e4e5.appspot.com",
+      messagingSenderId: "334107274506"
+    },
+    torii: {
+      sessionServiceName: 'session'
     }
   };
 
