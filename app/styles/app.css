@@ -9,3 +9,12 @@
 	padding: 20vh 0;
 	text-align: center;
 }
+
+/* Buttons */
+
+.add-button {
+	position: absolute;
+	z-index: 10;
+	bottom: 10px;
+	right: 10px;
+}
