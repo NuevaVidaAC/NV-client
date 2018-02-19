@@ -47,6 +47,8 @@
     "node": "^4.5 || 6.* || >= 7.*"
   },
   "dependencies": {
-    "materialize-css": "^1.0.0-alpha.3"
+    "materialize-css": "^1.0.0-alpha.3",
+    "save": "^2.3.2",
+    "sweetalert2": "^7.12.9"
   }
 }

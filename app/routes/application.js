@@ -8,7 +8,7 @@ export default Route.extend({
 	},	
 	actions: {
 		accessDenied() {
-		  this.transitionTo('login');
+			this.transitionTo('login');
 		}
 	}
 });

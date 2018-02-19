@@ -1,9 +1,11 @@
 <nav>
-	<div class="nav-wrapper green accent-4">
+	<div class="nav-wrapper teal darken-1">
 		<ul id="nav-mobile" class="right hide-on-med-and-down">
 			{{#if session.isAuthenticated}}
 				<li>{{#link-to 'plans'}}Planeaciones{{/link-to}}</li>
-				<li>{{#link-to 'admin.users'}}Usuarios{{/link-to}}</li>
+				{{#if session.currentUser.isAdmin}}
+					<li>{{#link-to 'admin.users'}}Usuarios{{/link-to}}</li>
+				{{/if}}
 				<li><a {{action 'signOut'}}>Sign Out</a></li>
 			{{/if}}
 		</ul>

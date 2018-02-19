@@ -7,9 +7,9 @@ export default Component.extend({
 
 	actions: {
 		signOut() {
-  			this.get('session').close().then(() =>{
-  				this.get('router').transitionTo('login');
-  			});
-    	}
+			this.get('session').close().then(() =>{
+				this.get('router').transitionTo('login');
+			});
+		}
 	}
 });

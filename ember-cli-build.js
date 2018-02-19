@@ -11,7 +11,9 @@ module.exports = function(defaults) {
   // output files.
   //
   app.import('node_modules/materialize-css/dist/js/materialize.min.js');
-  app.import('node_modules/materialize-css/dist/css/materialize.css');
+  app.import('node_modules/materialize-css/dist/css/materialize.min.css');
+  app.import('node_modules/sweetalert2/dist/sweetalert2.min.js');
+  app.import('node_modules/sweetalert2/dist/sweetalert2.min.css');
   // If you need to use different assets in different
   // environments, specify an object as the first parameter. That
   // object's keys should be the environment name and the values
