@@ -1,0 +1,50 @@
+<h3>{{model.name}}</h3>
+<div class="divider"></div>
+<div class="row">
+	<div class="input-field col s6">
+		<label for="location" class="active">Lugar</label>
+		{{input
+			id='location'
+			value=model.location
+		}}
+	</div>
+	<div class="input-field col s6">
+		{{#jquery-wrapper
+			query='.datepicker'
+			method='datepicker'
+		}}
+			{{input
+				type='text'
+				class='datepicker'
+				placeholder='Fecha'
+				value=model.date
+			}}
+		{{/jquery-wrapper}}
+	</div>
+	<div class="input-field col s6">
+		{{#jquery-wrapper
+			query='.timepicker'
+			method='timepicker'
+		}}
+			{{input
+				type='text'
+				placeholder='Hora de inicio'
+				class='timepicker'
+				value=model.startHour
+			}}
+		{{/jquery-wrapper}}
+	</div>
+	<div class="input-field col s6">
+		{{#jquery-wrapper
+			query='.timepicker'
+			method='timepicker'
+		}}
+			{{input
+				type='text'
+				placeholder='Hora de fin'
+				class='timepicker'
+				value=model.endHour
+			}}
+		{{/jquery-wrapper}}
+	</div>
+</div>

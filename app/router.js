@@ -7,13 +7,15 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('login', { path:'/' });
-  this.authenticatedRoute('home');
+  this.route('login');
+  this.authenticatedRoute('home', { path:'/' });
   this.authenticatedRoute('plans');
   this.authenticatedRoute('admin', function() {
     this.route('users', function() {});
     this.route('plans', function() {});
-    this.route('sessions');
+    this.route('sessions', function() {
+      this.route('detail', { path: '/:id' });
+    });
   });
 });
 

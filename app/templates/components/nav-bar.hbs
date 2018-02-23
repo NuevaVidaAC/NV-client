@@ -3,6 +3,7 @@
 		<ul id="nav-mobile" class="right hide-on-med-and-down">
 			{{#if session.isAuthenticated}}
 				<li>{{#link-to 'plans'}}Planeaciones{{/link-to}}</li>
+				<li>{{#link-to 'admin.sessions'}}Sesiones{{/link-to}}</li>
 				{{#if session.currentUser.isAdmin}}
 					<li>{{#link-to 'admin.users'}}Usuarios{{/link-to}}</li>
 				{{/if}}

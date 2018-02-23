@@ -5,11 +5,13 @@ export default Component.extend({
 	tagName: 'span',
 	query: 'a',
 	method: 'sideNav',
-	options: {},
+	options: {
+		inDuration: 0
+	},
 	didInsertElement () {
 		var query = this.get('query');
 		var method = this.get('method');
 		var options = this.get('options');
-		$(query)[method](options);
+		this.$(query)[method](Object.assign({}, options));
 	}
 });

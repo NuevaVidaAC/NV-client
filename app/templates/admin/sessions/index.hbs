@@ -1,0 +1,56 @@
+<h3>Sesiones</h3>
+<div class="divider"></div>
+
+<table class="striped">
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Lugar</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each model as |session|}}
+			<tr>
+				<td>{{#link-to 'admin.sessions.detail' session.id}}{{session.name}}{{/link-to}}</td>
+				<td>{{session.location}}</td>
+			</tr>
+		{{/each}}
+	</tbody>
+</table>
+
+{{#jquery-wrapper
+	query=".modal"
+	method="modal"
+}}
+	<div id="addSession" class="modal">
+		<div class="modal-content">
+			<h4>Crear Sesión</h4>
+			<form class="row">
+				<div class="input-field col s6">
+					{{input 
+						id='name' 
+						type='text'
+						value=name 
+						class='validate'
+					}}
+					<label for="name">Name</label>
+				</div>
+				<div class="input-field col s6">
+					{{input 
+						id='location' 
+						value=location 
+						class='validate'
+					}}
+					<label for="location">Lugar</label>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+			<a href="#!" class="waves-effect waves-green btn-flat" {{action 'createSession' name location}}>Crear</a>
+		</div>
+	</div>
+{{/jquery-wrapper}}
+<a data-target="addSession" class="modal-trigger btn-floating btn-large waves-effect waves-light red add-button">
+	<i class="material-icons">add</i>
+</a>

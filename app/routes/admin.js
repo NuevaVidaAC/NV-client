@@ -5,7 +5,8 @@ export default Route.extend({
 	session: service(),
 	beforeModel() {
 		let user = this.get('session.currentUser');
-		if(!user.isAdmin)
+		if(!user.data.isAdmin) {
 			this.transitionTo('home');
+		}
 	}
 });
