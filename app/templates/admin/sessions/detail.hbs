@@ -46,5 +46,83 @@
 				value=model.endHour
 			}}
 		{{/jquery-wrapper}}
+
+	<button class="btn" {{action 'update'}}>Guardar Cambios</button>
 	</div>
 </div>
+<div class="divider"></div>
+<br>
+<div class="row">
+	<h5 class="col s6">Planeaciones</h5>
+	<div class="col s6 right-align">
+	<a data-target="addPlan" class="modal-trigger btn waves-effect waves-light red">
+		<i class="material-icons left">add</i> Añadir Planeación
+	</a>
+	</div>
+</div>
+
+<table class="striped">
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>URL</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each model.plans as |plan|}}
+			<tr>
+				<td>
+					<a data-target="planFrame" class="modal-trigger clickable">
+						{{plan.name}}
+					</a>
+				</td>
+				<td>{{plan.url}}</td>
+			</tr>
+			{{#jquery-wrapper
+				query=".modal"
+				method="modal"
+			}}
+				<div id="planFrame" class="modal">
+					<div class="modal-content no-padding no-margin">
+						<iframe src="{{plan.url}}" style="width: 100%; height: 1000px;"></iframe>
+					</div>
+				</div>
+			{{/jquery-wrapper}}
+		{{/each}}
+	</tbody>
+</table>
+
+{{#jquery-wrapper
+	query=".modal"
+	method="modal"
+}}
+	<div id="addPlan" class="modal">
+		<div class="modal-content">
+			<h4>Crear Planeación</h4>
+			<form class="row">
+				<div class="input-field col s12">
+					{{input 
+						id='name' 
+						type='text'
+						value=name 
+						class='validate'
+					}}
+					<label for="name">Nombre</label>
+				</div>
+				<div class="input-field col s12">
+					{{input 
+						id='url' 
+						type='text'
+						value=url 
+						class='validate'
+					}}
+					<label for="url">URL</label>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+			<a href="#!" class="waves-effect waves-green btn-flat" {{action 'createPlan' name url model}}>Crear</a>
+		</div>
+	</div>
+{{/jquery-wrapper}}

@@ -6,6 +6,9 @@
 		<tr>
 			<th>Nombre</th>
 			<th>Lugar</th>
+			<th>Fecha</th>
+			<th>Hora de inicio</th>
+			<th>Hora de fin</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -13,6 +16,9 @@
 			<tr>
 				<td>{{#link-to 'admin.sessions.detail' session.id}}{{session.name}}{{/link-to}}</td>
 				<td>{{session.location}}</td>
+				<td>{{session.date}}</td>
+				<td>{{session.startHour}}</td>
+				<td>{{session.endHour}}</td>
 			</tr>
 		{{/each}}
 	</tbody>
