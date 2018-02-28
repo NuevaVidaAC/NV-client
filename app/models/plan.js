@@ -6,10 +6,9 @@ export default DS.Model.extend({
 	url: 		DS.attr('string'),
 	session: 	DS.belongsTo(),
 
-	wa: computed('url', function() {
-		let url = this.get('url');
-		console.log(this.get('url'))
-		// let wa = url.split('id=');
-		// console.log(wa);
+	urlId: computed('url', function() {
+		let url = `${this.get('url')}`;
+		let urlId = url.split('id=');
+		return `${urlId[1]}`;
 	})
 });

@@ -9,7 +9,6 @@ export default DS.Model.extend({
 
 	fullName: computed('name', 'lastName', function() {
 		let name = this.get('name');
-		console.log(name)
 		let lastName = this.get('lastName');
 
 		return `${name} ${lastName}`;
