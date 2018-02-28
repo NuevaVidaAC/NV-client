@@ -34,11 +34,11 @@ export default Route.extend({
 				cancelButtonColor: '#d33',
 				confirmButtonText: 'Borrar'
 			}).then((result) => {
-				let deletions = session.get('plans').map(function(comment) {
-				  return plan.destroyRecord();
+				let deletions = session.get('plans').map(function(plan) {
+					return plan.destroyRecord();
 				});
 				RSVP.all(deletions).then(function() {
-				  return session.destroyRecord();
+					return session.destroyRecord();
 				}).then(() => {
 					if (result.value) {
 						swal(
