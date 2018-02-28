@@ -5,7 +5,7 @@ export default DS.Model.extend({
 	name: 			DS.attr('string'),
 	lastName: 		DS.attr('string'),
 	email: 			DS.attr('string'),
-	isAdmin: 		DS.attr('boolean'),
+	isAdmin: 		DS.attr('boolean', { default: false }),
 
 	fullName: computed('name', 'lastName', function() {
 		let name = this.get('name');

@@ -12,6 +12,6 @@ export default Component.extend({
 		var query = this.get('query');
 		var method = this.get('method');
 		var options = this.get('options');
-		this.$(query)[method](Object.assign({}, options));
+		$(query)[method](Object.assign({}, options));
 	}
 });

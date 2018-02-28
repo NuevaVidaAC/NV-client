@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+import $ from 'jquery';
 
 export default Controller.extend({
 	// session: autosave('model')
@@ -33,6 +34,27 @@ export default Controller.extend({
 					'',
 					'success'
 				);
+			});
+		},
+		deletePlan(plan) {
+			swal({
+				title: '¿Estás seguro de querer borrar la planeación?',
+				text: "¡No podrás revertirlo!",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Borrar'
+			}).then((result) => {
+				plan.destroyRecord().then(() => {
+					if (result.value) {
+						swal(
+							'¡Borrado!',
+							'La planeación ha sido borrada',
+							'success'
+						);
+					}
+                });
 			});
 		}
 	}

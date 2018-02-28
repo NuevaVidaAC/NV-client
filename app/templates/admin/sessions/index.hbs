@@ -19,6 +19,7 @@
 				<td>{{session.date}}</td>
 				<td>{{session.startHour}}</td>
 				<td>{{session.endHour}}</td>
+				<td><a class="clickable" {{action 'deleteSession' session}}><i class="material-icons">delete_forever</i></a></td>
 			</tr>
 		{{/each}}
 	</tbody>
