@@ -11,6 +11,13 @@ body {
 
 /* General Classes */
 
+.with-navbar { 
+	margin-left: 225px; 	
+	margin-right: 45px;
+	margin-top: 2em;
+}
+
+
 .with-background {
     background-position: center;
     background-size: cover;
@@ -31,6 +38,7 @@ body {
 }
 
 .no-margin { margin: 0 !important; }
+.no-margin-top { margin-top: 0 !important; }
 .no-padding { padding: 0 !important; }
 
 .clickable { cursor: pointer; }
@@ -71,6 +79,16 @@ body {
 .nv-nav .material-icons {
 	font-size: 30px;
 }
+
+/* Cards */
+
+.nv-card {
+	padding: 1.5em;	
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+.full-card { height: 89vh; }
 
 /* Login */
 

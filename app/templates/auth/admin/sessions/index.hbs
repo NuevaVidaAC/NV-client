@@ -1,63 +1,65 @@
-<h3>Sesiones</h3>
-<div class="divider"></div>
+<div class="full-card">
+	<h4 class="no-margin-top">Sesiones</h4>
+	<div class="divider"></div>
 
-<table class="striped">
-	<thead>
-		<tr>
-			<th>Nombre</th>
-			<th>Lugar</th>
-			<th>Fecha</th>
-			<th>Hora de inicio</th>
-			<th>Hora de fin</th>
-		</tr>
-	</thead>
-	<tbody>
-		{{#each model as |session|}}
+	<table class="striped">
+		<thead>
 			<tr>
-				<td>{{#link-to 'auth.admin.sessions.detail' session.id}}{{session.name}}{{/link-to}}</td>
-				<td>{{session.location}}</td>
-				<td>{{session.date}}</td>
-				<td>{{session.startHour}}</td>
-				<td>{{session.endHour}}</td>
-				<td><a class="clickable" {{action 'deleteSession' session}}><i class="material-icons">delete_forever</i></a></td>
+				<th>Nombre</th>
+				<th>Lugar</th>
+				<th>Fecha</th>
+				<th>Hora de inicio</th>
+				<th>Hora de fin</th>
 			</tr>
-		{{/each}}
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			{{#each model as |session|}}
+				<tr>
+					<td>{{#link-to 'auth.admin.sessions.detail' session.id}}{{session.name}}{{/link-to}}</td>
+					<td>{{session.location}}</td>
+					<td>{{session.date}}</td>
+					<td>{{session.startHour}}</td>
+					<td>{{session.endHour}}</td>
+					<td><a class="clickable" {{action 'deleteSession' session}}><i class="material-icons">delete_forever</i></a></td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
 
-{{#jquery-wrapper
-	query=".modal"
-	method="modal"
-}}
-	<div id="addSession" class="modal">
-		<div class="modal-content">
-			<h4>Crear Sesión</h4>
-			<form class="row">
-				<div class="input-field col s6">
-					{{input 
-						id='name' 
-						type='text'
-						value=name 
-						class='validate'
-					}}
-					<label for="name">Name</label>
-				</div>
-				<div class="input-field col s6">
-					{{input 
-						id='location' 
-						value=location 
-						class='validate'
-					}}
-					<label for="location">Lugar</label>
-				</div>
-			</form>
+	{{#jquery-wrapper
+		query=".modal"
+		method="modal"
+	}}
+		<div id="addSession" class="modal">
+			<div class="modal-content">
+				<h4>Crear Sesión</h4>
+				<form class="row">
+					<div class="input-field col s6">
+						{{input 
+							id='name' 
+							type='text'
+							value=name 
+							class='validate'
+						}}
+						<label for="name">Name</label>
+					</div>
+					<div class="input-field col s6">
+						{{input 
+							id='location' 
+							value=location 
+							class='validate'
+						}}
+						<label for="location">Lugar</label>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+				<a href="#!" class="waves-effect waves-green btn-flat" {{action 'createSession' name location}}>Crear</a>
+			</div>
 		</div>
-		<div class="modal-footer">
-			<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
-			<a href="#!" class="waves-effect waves-green btn-flat" {{action 'createSession' name location}}>Crear</a>
-		</div>
-	</div>
-{{/jquery-wrapper}}
-<a data-target="addSession" class="modal-trigger btn-floating btn-large waves-effect waves-light red add-button">
-	<i class="material-icons">add</i>
-</a>
+	{{/jquery-wrapper}}
+	<a data-target="addSession" class="modal-trigger btn-floating btn-large waves-effect waves-light red add-button">
+		<i class="material-icons">add</i>
+	</a>
+</div>
