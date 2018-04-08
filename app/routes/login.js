@@ -4,6 +4,13 @@ import { inject as service } from '@ember/service';
 export default Route.extend({
 	session: service(),
 	firebase: service(),
+	
+	beforeModel() {
+		if (this.get('session.content.isAuthenticated')) {
+			this.transitionTo('auth.home');
+		}
+	},
+
 	actions: {
 		login(email, password) {
 			this.get('session').open('firebase', {
@@ -13,7 +20,7 @@ export default Route.extend({
 			}).then(() => {
 				this.set('controller.email', null);
 				this.set('controller.password', null);
-				this.transitionTo('home');
+				this.transitionTo('auth.home');
 			}).catch((error) => {
 				alert(error);
 			});

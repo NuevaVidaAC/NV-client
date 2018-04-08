@@ -14,7 +14,7 @@
 	<tbody>
 		{{#each model as |session|}}
 			<tr>
-				<td>{{#link-to 'admin.sessions.detail' session.id}}{{session.name}}{{/link-to}}</td>
+				<td>{{#link-to 'auth.admin.sessions.detail' session.id}}{{session.name}}{{/link-to}}</td>
 				<td>{{session.location}}</td>
 				<td>{{session.date}}</td>
 				<td>{{session.startHour}}</td>

@@ -8,13 +8,14 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('login');
-  this.authenticatedRoute('home', { path:'/' });
-  this.authenticatedRoute('plans');
-  this.authenticatedRoute('admin', function() {
-    this.route('users', function() {});
-    this.route('plans', function() {});
-    this.route('sessions', function() {
-      this.route('detail', { path: '/:id' });
+  this.authenticatedRoute('auth', { path: '/' }, function() {
+    this.route('home', { path: '/' });
+    this.route('admin', function() {
+      this.route('users', function() {});
+      this.route('plans');
+      this.route('sessions', function() {
+        this.route('detail', { path: '/:id' });
+      });
     });
   });
 });

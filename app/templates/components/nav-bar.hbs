@@ -1,14 +1,45 @@
-<nav>
-	<div class="nav-wrapper teal darken-1">
-		<ul id="nav-mobile" class="right hide-on-med-and-down">
-			{{#if session.isAuthenticated}}
-				<li>{{#link-to 'plans'}}Planeaciones{{/link-to}}</li>
-				<li>{{#link-to 'admin.sessions'}}Sesiones{{/link-to}}</li>
-				{{#if session.currentUser.isAdmin}}
-					<li>{{#link-to 'admin.users'}}Usuarios{{/link-to}}</li>
-				{{/if}}
-				<li><a {{action 'signOut'}}>Sign Out</a></li>
-			{{/if}}
-		</ul>
-	</div>
-</nav>
+<div class="nv-nav darken-1">
+	<ul class="center hide-on-med-and-down">
+		<li class="position-relative">
+			{{#link-to 'auth.home'}}
+				<div class="with-background logo" style="{{background-image '/img/logo-nv.svg'}}"></div>
+			{{/link-to}}
+		</li>
+		<div class="divider"></div>
+		<li>
+			{{#link-to 'auth.admin.sessions'}}
+				<br>
+				<i class="material-icons">date_range</i>
+				<br>
+				Sesiones
+				<br>
+				<br>
+			{{/link-to}}
+		</li>
+		<div class="divider"></div>
+		{{#if session.currentUser.isAdmin}}
+			<li>
+				{{#link-to 'auth.admin.users'}}
+					<br>
+					<i class="material-icons">person</i>
+					<br>
+					Usuarios
+					<br>
+					<br>
+				{{/link-to}}
+			</li>
+		{{/if}}
+		<div class="divider"></div>
+			<li>
+				<a {{action 'signOut'}}>
+					<br>
+					<i class="material-icons">exit_to_app</i>
+					<br>
+					Sign Out
+					<br>
+					<br>
+				</a>
+			</li>
+		<div class="divider"></div>
+	</ul>
+</div>

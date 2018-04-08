@@ -1,0 +1,84 @@
+<h3>Usuarios</h3>
+<div class="divider"></div>
+
+<table class="striped">
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Correo Electrónico</th>
+			<th>Administrador</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each model as |user|}}
+			<tr>
+				<td>{{user.fullName}}</td>
+				<td>{{user.email}}</td>
+				<td>{{user.isAdmin}}</td>
+			</tr>
+		{{/each}}
+	</tbody>
+</table>
+
+{{#jquery-wrapper
+	query=".modal"
+	method="modal"
+}}
+	<div id="addUser" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<h4>Crear Usuario</h4>
+			<form class="row">
+				<div class="input-field col s6">
+					{{input 
+						id='name' 
+						value=name 
+						class='validate'
+					}}
+					<label for="name">Nombre</label>
+				</div>
+				<div class="input-field col s6">
+					{{input 
+						id='lastName' 
+						value=lastName 
+						class='validate'
+					}}
+					<label for="lastName">Apellido</label>
+				</div>
+				<div class="input-field col s12">
+					{{input 
+						id='email' 
+						type='email'
+						value=email 
+						class='validate'
+					}}
+					<label for="email">Correo Electrónico</label>
+				</div>
+				<div class="input-field col s12">
+					{{input 
+						id='password' 
+						type='password' 
+						value=pass
+						class='validate'
+					}}
+					<label for="password">Contraseña</label>
+				</div>
+				<p class="col s6">
+					<label>
+						{{input 
+							checked=isAdmin
+							type='checkbox'
+						}}
+						<span>Admin</span>
+					</label>
+				</p>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+			<a href="#!" class="waves-effect waves-green btn-flat" {{action 'createUser' email pass name lastName isAdmin}}>Crear</a>
+		</div>
+	</div>
+{{/jquery-wrapper}}
+<a data-target="addUser" class="modal-trigger btn-floating btn-large waves-effect waves-light red add-button">
+	<i class="material-icons">add</i>
+</a>
