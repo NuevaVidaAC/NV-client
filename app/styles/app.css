@@ -39,7 +39,7 @@ body {
 
 .nv-nav {
 	background-color: #fff;
-	border-radius: 5px;
+	border-radius: 5px;	
 	position: absolute;
 	left: 40px;
 	top: 30px;
@@ -49,6 +49,16 @@ body {
 
 .nv-nav a {
 	color: #666;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.nv-nav li {
+	position: relative;
+	height: 100px;
 }
 
 .nv-nav .logo {
@@ -68,6 +78,7 @@ body {
 	margin: 64px 0;
 	height: 80vh;
 	padding: 3em 3em !important;
+	overflow: auto;
 	text-align: center;
 }
 
