@@ -11,12 +11,18 @@ body {
 
 /* General Classes */
 
-.with-navbar { 
-	margin-left: 225px; 	
-	margin-right: 45px;
-	margin-top: 2em;
+.with-navbar {
+	position: absolute;
+	left: 225px;
+	top: 30px;
+	right: 45px;
+	bottom: 30px;
 }
 
+.no-underline { 
+	border-bottom: none !important; 
+	box-shadow: none !important;
+}
 
 .with-background {
     background-position: center;
@@ -39,6 +45,7 @@ body {
 
 .no-margin { margin: 0 !important; }
 .no-margin-top { margin-top: 0 !important; }
+.no-margin-bottom { margin-bottom: 0 !important; }
 .no-padding { padding: 0 !important; }
 
 .clickable { cursor: pointer; }
@@ -47,6 +54,7 @@ body {
 
 .nv-nav {
 	background-color: #fff;
+	overflow: auto;
 	border-radius: 5px;	
 	position: absolute;
 	left: 40px;
@@ -84,11 +92,12 @@ body {
 
 .nv-card {
 	padding: 1.5em;	
+	height: 100%;
+	width: 100%;
 	border-radius: 5px;
+	overflow: auto;
 	background-color: #fff;
 }
-
-.full-card { height: 89vh; }
 
 /* Login */
 
@@ -102,13 +111,17 @@ body {
 
 /* Buttons */
 
-.add-button {
-	position: absolute;
-	z-index: 10;
-	bottom: 10px;
-	right: 10px;
-}
-
 .btn-rounded {
 	border-radius: 15px;
+}
+
+/* Inputs */ 
+
+.search-input {
+	background-color: #fff !important;
+	border: 1px solid #CBD6E2 !important;
+	margin-bottom: 0 !important;
+	height: 2.7rem;
+	border-radius: 4px;
+	padding: 0 .5em;
 }

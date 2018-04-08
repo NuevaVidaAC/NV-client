@@ -1,5 +1,20 @@
-<div class="full-card">
-	<h4 class="no-margin-top">Usuarios</h4>
+<div class="nv-card">
+	<div class="row no-margin-top no-padding">
+		<h4 class="no-margin col s5 no-padding">Usuarios</h4>
+		<div class="input-field col s5 no-margin search-input valign-wrapper">
+			<i class="material-icons prefix grey-text text-darken-1">search</i>
+			{{input 
+				type="text" 
+				class="no-underline no-margin-bottom"
+				placeholder="Buscar..."
+			}}
+		</div>
+		<div class="col s2">
+			<a data-target="addUser" class="right modal-trigger btn waves-effect waves-light">
+				Añadir Usuario
+			</a>
+		</div>
+	</div>
 	<div class="divider"></div>
 
 	<table class="striped">
@@ -80,7 +95,4 @@
 			</div>
 		</div>
 	{{/jquery-wrapper}}
-	<a data-target="addUser" class="modal-trigger btn-floating btn-large waves-effect waves-light red add-button">
-		<i class="material-icons">add</i>
-	</a>
 </div>

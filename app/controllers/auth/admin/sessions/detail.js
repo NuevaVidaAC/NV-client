@@ -1,3 +1,4 @@
+/*global swal*/
 import Controller from '@ember/controller';
 import $ from 'jquery';
 
