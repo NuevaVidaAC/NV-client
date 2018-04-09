@@ -105,16 +105,16 @@ body {
 
 .right-top-card {
 	position: absolute; 
-	left: calc(100% / 12 * 7 + 45px) !important;
-	width: calc(100% / 12 * 5 - 45px);
+	left: calc(100% / 12 * 8 + 45px) !important;
+	width: calc(100% / 12 * 4 - 45px);
 	right: 0 !important; 
 	height: 50%;
 }
 
 .right-down-card {
 	position: absolute;
-	left: calc(100% / 12 * 7) !important;
-	width: calc(100% / 12 * 5 - 45px);
+	left: calc(100% / 12 * 8) !important;
+	width: calc(100% / 12 * 4 - 45px);
 	right: 0 !important;
 	bottom: 0;
 }
@@ -159,8 +159,13 @@ body {
 }
 
 .ember-power-calendar-days { text-align: center; }
+.ember-power-calendar-day--selected { 
+	background-color:  #26a69a !important;
+	color: #fff !important;
+}
 
 .ember-power-calendar-day { 
+	cursor: pointer;
 	width: calc(92% / 8);
 	margin-right: 1%;
 	padding: 0 15px; 

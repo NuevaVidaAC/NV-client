@@ -31,6 +31,9 @@ module.exports = function(environment) {
     },
     torii: {
       sessionServiceName: 'session'
+    },
+    moment: {
+      includeLocales: ['es-us']
     }
   };
 
