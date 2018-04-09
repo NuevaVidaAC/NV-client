@@ -1,10 +1,10 @@
 html {
-	overflow-y: hidden;
+	overflow: hidden;
 	height: 100%;
 }
 
 body {
-	overflow-y: hidden;
+	overflow: hidden;
 	height: 100%;
 
 }
@@ -103,6 +103,22 @@ body {
 	background-color: #fff;
 }
 
+.right-top-card {
+	position: absolute; 
+	left: calc(100% / 12 * 7 + 45px) !important;
+	width: calc(100% / 12 * 5 - 45px);
+	right: 0 !important; 
+	height: 50%;
+}
+
+.right-down-card {
+	position: absolute;
+	left: calc(100% / 12 * 7) !important;
+	width: calc(100% / 12 * 5 - 45px);
+	right: 0 !important;
+	bottom: 0;
+}
+
 /* Login */
 
 .login-form {
@@ -128,4 +144,57 @@ body {
 	height: 2.7rem;
 	border-radius: 4px;
 	padding: 0 .5em;
+}
+
+/* Power-Calendar */
+
+.ember-power-calendar-weekdays { margin-bottom: 1em; }
+.ember-power-calendar-week { 
+	margin-bottom: .5em; 
+}
+
+.ember-power-calendar-weekday {
+	display: inline-block;
+	width: calc(100% / 8);
+}
+
+.ember-power-calendar-days { text-align: center; }
+
+.ember-power-calendar-day { 
+	width: calc(92% / 8);
+	margin-right: 1%;
+	padding: 0 15px; 
+	color: #999;
+	border-radius: 50%;
+	background-color: #fff;
+	border: none;
+	height: 2.9rem; 
+}
+
+.ember-power-calendar-day--current-month { color: #000; }
+.ember-power-calendar-day--today { 
+	color: #26a69a;
+}
+
+.ember-power-calendar-nav { 
+	background-color: #fff !important; 
+	box-shadow: none;
+	border: none;
+}
+
+.ember-power-calendar-nav-control, .ember-power-calendar-nav-control:focus {
+	display: inline-block;
+	background-color: #fff;
+	border: none;
+	color: #999;
+	cursor: pointer;
+	width: 10%;
+}
+
+.ember-power-calendar-nav-title {
+	display: inline-block;
+	text-align: center;
+	z-index: 100;
+	color: #999;
+	width: 75%;
 }

@@ -4,7 +4,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -14,6 +14,7 @@ module.exports = function(defaults) {
   app.import('node_modules/materialize-css/dist/css/materialize.min.css');
   app.import('node_modules/sweetalert2/dist/sweetalert2.min.js');
   app.import('node_modules/sweetalert2/dist/sweetalert2.min.css');
+
   // If you need to use different assets in different
   // environments, specify an object as the first parameter. That
   // object's keys should be the environment name and the values

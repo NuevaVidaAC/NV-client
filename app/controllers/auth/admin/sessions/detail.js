@@ -3,7 +3,6 @@ import Controller from '@ember/controller';
 import $ from 'jquery';
 
 export default Controller.extend({
-	// session: autosave('model')
 	actions: {
 		update () {
 			let session = this.get('model');

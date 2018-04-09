@@ -1,4 +1,4 @@
-<div class="row full-height">
+<div class="row full-height position-relative">
 	<div class="nv-card col s7">
 		<div class="row no-margin no-padding">
 			<h4 class="no-margin-top col s6 no-padding">{{model.name}}</h4>
@@ -134,19 +134,25 @@
 			</div>
 		{{/jquery-wrapper}}
 	</div>
-	<div class="col s4 nv-card" style="margin-left: 45px; height: 60%;">
-		{{#jquery-wrapper
-			query='.datepicker'
-			method='datepicker'
-		}}
-			{{input
-				type='text'
-				class='datepicker'
-				placeholder='Fecha'
-				value=model.date
-			}}
-		{{/jquery-wrapper}}
+	<div class="nv-card right-top-card">
+		{{#power-calendar
+			center=center
+			onCenterChange=(action (mut center) value="date") as |calendar|
+		}} 
+			<nav class="ember-power-calendar-nav valign-wrapper">
+				<button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -1 'month'}}>
+					<i class="material-icons">chevron_left</i>
+				</button>
+				<div class="ember-power-calendar-nav-title">
+					{{moment-format calendar.center 'MMMM YYYY'}}
+				</div>
+				<button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 1 'month'}}>
+					<i class="material-icons">chevron_right</i>
+				</button>
+			</nav>
+			{{calendar.days}}
+		{{/power-calendar}}
 	</div>
-	<div class="col s4 nv-card" style="margin-left: 45px; margin-top: 45px; height: 35%;">
+	<div class="nv-card right-down-card" style="margin-left: 45px; margin-top: 45px; height: 45%;">
 	</div>
 </div>
