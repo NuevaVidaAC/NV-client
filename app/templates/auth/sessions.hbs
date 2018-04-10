@@ -1,0 +1,30 @@
+<div class="row full-height position-relative">
+	<div class="nv-card col s8">
+		{{outlet}}	
+	</div>
+	<div class="nv-card right-top-card">
+		{{#power-calendar
+			center=center
+			selected=selected
+			locale='es-us'			
+			onCenterChange=(action (mut center) value="date") 
+			onSelect=(action (mut selected) value="moment") 
+			as |calendar|
+		}} 
+			<nav class="ember-power-calendar-nav valign-wrapper">
+				<button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -1 'month'}}>
+					<i class="material-icons">chevron_left</i>
+				</button>
+				<div class="ember-power-calendar-nav-title">
+					{{moment-format calendar.center 'MMMM YYYY'}}
+				</div>
+				<button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 1 'month'}}>
+					<i class="material-icons">chevron_right</i>
+				</button>
+			</nav>
+			{{calendar.days}}
+		{{/power-calendar}}
+	</div>
+	<div class="nv-card right-down-card" style="margin-left: 45px; margin-top: 45px; height: 45%;">
+	</div>
+</div>

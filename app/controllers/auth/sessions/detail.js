@@ -1,11 +1,11 @@
 /*global swal*/
 import Controller from '@ember/controller';
 import $ from 'jquery';
-import { inject } from '@ember/service';
+import { inject as service } from '@ember/service';
 import moment from 'moment';
 
 export default Controller.extend({
-	moment: inject(),
+	moment: service(),
 
 	actions: {
 		update () {

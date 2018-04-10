@@ -148,7 +148,7 @@ body {
 
 /* Power-Calendar */
 
-.ember-power-calendar-weekdays { margin-bottom: 1em; }
+.ember-power-calendar-weekdays { margin-bottom: .7em; }
 .ember-power-calendar-week { 
 	margin-bottom: .5em; 
 }

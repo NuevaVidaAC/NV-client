@@ -1,0 +1,9 @@
+{{#if model}}
+	{{#each model as |session|}}
+		{{#link-to 'auth.sessions.detail' session.id}}
+			{{session.name}}
+		{{/link-to}}
+	{{/each}}
+{{else}}
+	No hay sesiones
+{{/if}}
