@@ -1,6 +1,9 @@
 import Component from '@ember/component';
+import { computed } from '@ember/object';
 
 export default Component.extend({
+	value: null,
+
 	dateOpts: {
 		i18n: {
 			months: [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ],
@@ -9,8 +12,8 @@ export default Component.extend({
 			weekdaysShort: [ 'dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb' ],
 			weekdaysAbbrev: ["D", "L", "M", "M", "J", "V", "S"],
 			today: 'hoy',
-			cancel: 'cerrar',
-			done: 'aceptar',
+			clear: 'borrar',
+			done: 'aceptar'
 		},
 		format: 'dd/mm/yyyy'
 	},
@@ -19,5 +22,18 @@ export default Component.extend({
 		this._super(...arguments);
 		let options = this.get('dateOpts');
 		this.$('.datepicker').datepicker(options);
+	},
+
+	actions: {
+		value: computed('val', {
+		get (/*key*/) {
+			let val = this.get('val');
+			return val;
+		},
+		set (key, newVal) {
+			let val = moment(newVal, 'dd/mm/yyyy');
+			this.set('val', val);
+		}
+	}),
 	}
 });
