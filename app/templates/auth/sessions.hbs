@@ -1,6 +1,6 @@
 <div class="row full-height position-relative">
 	<div class="nv-card col s8">
-		{{outlet}}	
+		{{outlet}}
 	</div>
 	<div class="nv-card right-top-card">
 		{{#power-calendar
@@ -8,7 +8,7 @@
 			selected=selected
 			locale='es-us'			
 			onCenterChange=(action (mut center) value="date") 
-			onSelect=(action (mut selected) value="moment") 
+			onSelect=(action 'wa' value="moment") 
 			as |calendar|
 		}} 
 			<nav class="ember-power-calendar-nav valign-wrapper">

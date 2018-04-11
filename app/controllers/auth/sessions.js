@@ -2,8 +2,13 @@
 import Controller from '@ember/controller';
 import $ from 'jquery';
 import RSVP from 'rsvp';
+import { inject as service } from '@ember/service';
+ 
+export default Controller.extend({	
+	moment: service(),
+	dataService: service(),
 
-export default Controller.extend({
+	selected: moment(),
 	actions: {
 		createSession (name, location) {
 			const newSession = this.store.createRecord('session', {
@@ -46,6 +51,14 @@ export default Controller.extend({
 					}
                 });
 			});
+		},
+		wa (day) {
+			this.set('selected', day);
+			this.set('dataService.wa', day);
+			let data = this.get('model');
+			let date = moment(day).format('D/M/YYYY');
+			let filteredData = data.filterBy('date', date);
+			this.set('dataService.data', filteredData);
 		} 
 	}
 });

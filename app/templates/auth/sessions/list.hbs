@@ -1,5 +1,5 @@
-{{#if model}}
-	{{#each model as |session|}}
+{{#if dataService.data}}
+	{{#each dataService.data as |session|}}
 		{{#link-to 'auth.sessions.detail' session.id}}
 			{{session.name}}
 		{{/link-to}}

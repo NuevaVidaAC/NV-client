@@ -1,11 +1,11 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-module('Unit | Route | auth/sessions/index', function(hooks) {
+module('Unit | Route | auth/sessions/list', function(hooks) {
   setupTest(hooks);
 
   test('it exists', function(assert) {
-    let route = this.owner.lookup('route:auth/sessions/index');
+    let route = this.owner.lookup('route:auth/sessions/list');
     assert.ok(route);
   });
 });

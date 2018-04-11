@@ -50,15 +50,15 @@ export default Controller.extend({
 				cancelButtonColor: '#d33',
 				confirmButtonText: 'Borrar'
 			}).then((result) => {
-				plan.destroyRecord().then(() => {
-					if (result.value) {
+				if (result.value) {
+					plan.destroyRecord().then(() => {
 						swal(
 							'¡Borrado!',
 							'La planeación ha sido borrada',
 							'success'
 						);
-					}
-                });
+					});
+                }
 			});
 		}
 	}

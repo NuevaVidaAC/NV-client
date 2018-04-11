@@ -11,6 +11,7 @@ Router.map(function() {
   this.authenticatedRoute('auth', { path: '/' }, function() {
     this.route('home', { path: '/' });
     this.route('sessions', function() {
+      this.route('list', { path: '/' });
       this.route('detail', { path: '/:id' });
     });
     this.route('admin', function() {
