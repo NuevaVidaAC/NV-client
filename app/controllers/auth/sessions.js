@@ -3,10 +3,17 @@ import Controller from '@ember/controller';
 import $ from 'jquery';
 import RSVP from 'rsvp';
 import { inject as service } from '@ember/service';
+import { computed } from '@ember/object';
  
 export default Controller.extend({	
 	moment: service(),
 	dataService: service(),
+
+	dates: computed('model', function() {
+		let data = this.get('model');
+		let mappedData = data.mapBy('date');
+		return mappedData;
+	}),
 
 	selected: moment(),
 	actions: {
@@ -52,9 +59,9 @@ export default Controller.extend({
                 });
 			});
 		},
-		wa (day) {
+		setDate (day) {
 			this.set('selected', day);
-			this.set('dataService.wa', day);
+			this.set('dataService.date', day);
 			let data = this.get('model');
 			let date = moment(day).format('D/M/YYYY');
 			let filteredData = data.filterBy('date', date);

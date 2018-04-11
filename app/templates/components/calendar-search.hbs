@@ -1,0 +1,31 @@
+{{#power-calendar
+	center=center
+	selected=selected
+	locale='es-us'			
+	onCenterChange=(action (mut center) value="date") 
+	onSelect=onSelect
+	as |calendar|
+}} 
+	<nav class="ember-power-calendar-nav valign-wrapper">
+		<button type="button" class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter -1 'month'}}>
+			<i class="material-icons">chevron_left</i>
+		</button>
+		<div class="ember-power-calendar-nav-title">
+			{{moment-format calendar.center 'MMMM YYYY'}}
+		</div>
+		<button class="ember-power-calendar-nav-control" onclick={{action calendar.actions.moveCenter 1 'month'}}>
+			<i class="material-icons">chevron_right</i>
+		</button>
+	</nav>
+	{{#calendar.days as |day|}}
+		{{#with (moment-format day.date 'ddd') as |weekday|}}
+			{{#if (includes dates (moment-format day.date 'D/M/YYYY'))}}
+				<div class="dot"></div>
+				{{day.number}}
+			{{else}}
+				{{day.number}}
+			{{/if}}
+		{{/with}}
+	{{/calendar.days}}
+	{{!-- {{calendar.days}} --}}
+{{/power-calendar}}

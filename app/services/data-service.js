@@ -1,7 +1,7 @@
 import Service from '@ember/service';
 
 export default Service.extend({
-	wa: moment(),
+	date: moment(),
 	data: null,
 	
 });
