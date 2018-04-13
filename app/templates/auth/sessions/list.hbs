@@ -1,9 +1,39 @@
+<div class="row no-padding no-margin">
+	<div class="col s7 no-padding">
+		<h4 class="no-margin">Sesiones</h4>
+		<p class="grey-text text-darken-1 small-margin-top">{{capitalize (moment-format 
+				dataService.date 'dddd D [de] MMMM [de] YYYY' 
+				locale='es-us')
+			}}
+		</p>
+	</div>
+	<div class="divider col s12"></div>
+</div>
 {{#if dataService.data}}
-	{{#each dataService.data as |session|}}
-		{{#link-to 'auth.sessions.detail' session.id}}
-			{{session.name}}
-		{{/link-to}}
-	{{/each}}
+	<button class="btn waves-effect right waves-light btn-rounded btn-add"><i class="material-icons left">add</i> Agregar</button>
+	<div class="row no-margin no-padding">
+		{{#each dataService.data as |session|}}
+			<div class="col s9 no-padding">
+				<h5 class="no-margin-bottom">{{session.name}}</h5>
+				<p class="grey-text text-darken-1 small-margin-top no-margin-bottom inline-block"><i class="material-icons left">alarm</i>{{session.startHour}} - {{session.endHour}}</p> 
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				<p class="grey-text text-darken-1 small-margin-top inline-block"><i class="material-icons left">location_on</i>{{session.location}}</p>
+			</div>
+			<div class="col s3">
+				<br>
+				{{#link-to 'auth.sessions.detail' session.id class="btn-floating right waves-effect waves-light white"}}
+						<i class="material-icons circle">chevron_right_arrow</i>
+				{{/link-to}}
+			</div>
+			<div class="divider col s12"></div>
+		{{/each}}
+	</div>
 {{else}}
-	No hay sesiones
+	<div class="full-width center padded-card">
+		<h5 class="grey-text text-darken-1">No hay sesiones registradas para este día   :(</h5>
+		<br>
+		<button class="btn waves-effect waves-light btn-rounded"><i class="material-icons left">add</i> Agregar</button>
+	</div>
 {{/if}}

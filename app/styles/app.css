@@ -35,6 +35,8 @@ body {
 .position-relative { position: relative; }
 .position-absolute { position: absolute; }
 
+.inline-block { display: inline-block; }
+
 .filler {
 	position: absolute;
 	top: 0;
@@ -49,10 +51,18 @@ body {
 .no-margin { margin: 0 !important; }
 .no-margin-top { margin-top: 0 !important; }
 .no-margin-bottom { margin-bottom: 0 !important; }
+.small-margin-top { margin-top: .4em; }
+.small-padding-top { padding-top: .5em !important; }
 .padded { padding: 1.5em; }
+.no-padding-right { padding-right: 0 !important;  }
 .no-padding { padding: 0 !important; }
 
 .clickable { cursor: pointer; }
+
+.circle {
+	border: 1px #ddd solid;
+	border-radius: 50%;	
+}
 
 /* Navbar */
 
@@ -122,6 +132,10 @@ body {
 	height: 45%;
 }
 
+.padded-card {
+	padding-top: 15%;
+}
+
 /* Login */
 
 .login-form {
@@ -134,8 +148,18 @@ body {
 
 /* Buttons */
 
+.btn-add {
+	position: absolute;
+	top: 1.7em;
+	right: 1.5em;
+}
+
+.btn-next {
+	width: auto;
+}
+
 .btn-rounded {
-	border-radius: 15px;
+	border-radius: 20px;
 }
 
 /* Inputs */ 
@@ -217,4 +241,21 @@ body {
 	left: 47%;
 	border: 2.5px #26a69a solid;
 	border-radius: 50%;
+}	
+
+/* Materialize Overwrites */
+
+.btn-floating {
+	box-shadow: none !important;
+	border: 2px #26a69a solid;
 }
+
+.btn-floating i {
+	margin-left: 4.5px;
+	color: #26a69a;
+	line-height: 38px; 
+	font-size: 27px;
+	border:none;
+}
+
+i.left { margin-right: 7px; }

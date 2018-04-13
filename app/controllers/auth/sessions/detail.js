@@ -1,12 +1,8 @@
 /*global swal*/
 import Controller from '@ember/controller';
 import $ from 'jquery';
-import { inject as service } from '@ember/service';
-import moment from 'moment';
 
 export default Controller.extend({
-	moment: service(),
-
 	actions: {
 		update () {
 			let session = this.get('model');

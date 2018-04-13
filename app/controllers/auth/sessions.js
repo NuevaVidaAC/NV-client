@@ -3,10 +3,10 @@ import Controller from '@ember/controller';
 import $ from 'jquery';
 import RSVP from 'rsvp';
 import { inject as service } from '@ember/service';
+import moment from 'moment';
 import { computed } from '@ember/object';
  
 export default Controller.extend({	
-	moment: service(),
 	dataService: service(),
 
 	dates: computed('model', function() {
@@ -66,6 +66,7 @@ export default Controller.extend({
 			let date = moment(day).format('D/M/YYYY');
 			let filteredData = data.filterBy('date', date);
 			this.set('dataService.data', filteredData);
+			this.transitionToRoute('/sessions/');
 		} 
 	}
 });
