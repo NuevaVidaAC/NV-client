@@ -31,6 +31,8 @@ body {
 }
 
 .behind { z-index: -1 !important }
+.on-top { z-index: 10 !important; }
+.very-on-top { z-index: 100 !important; }
 
 .position-relative { position: relative; }
 .position-absolute { position: absolute; }
@@ -51,10 +53,17 @@ body {
 .no-margin { margin: 0 !important; }
 .no-margin-top { margin-top: 0 !important; }
 .no-margin-bottom { margin-bottom: 0 !important; }
+.margin-right { margin-right: 1em; }
+
 .small-margin-top { margin-top: .4em; }
 .small-padding-top { padding-top: .5em !important; }
-.padded { padding: 1.5em; }
+.small-padding-right { padding-right: .5em !important; }
+.small-padded { padding: .7em; }
+.padding-right { padding-right: 1em !important; }
+.padding-left { padding-left: 1em !important; }
+.padded { padding: 1.5em !important; }
 .no-padding-right { padding-right: 0 !important;  }
+.no-padding-left { padding-left: 0 !important;  }
 .no-padding { padding: 0 !important; }
 
 .clickable { cursor: pointer; }
@@ -63,6 +72,16 @@ body {
 	border: 1px #ddd solid;
 	border-radius: 50%;	
 }
+
+.center-right {
+	position: absolute;
+	right: 5px;
+	top: 40%;
+}
+
+.rounded-border { border-radius: 5px; }
+
+.scroll { overflow: auto; }
 
 /* Navbar */
 
@@ -243,6 +262,82 @@ body {
 	border-radius: 50%;
 }	
 
+/* Power-Select */
+
+.ember-power-select-dropdown{
+	z-index: 2000 !important;
+}
+
+.ember-power-select-trigger {
+	background-color: transparent !important;
+	box-shadow: none !important;
+	box-sizing: border-box !important;
+	height: 3rem;
+	overflow-y: hidden;
+}
+
+.ember-power-select-trigger:focus, .ember-power-select-trigger--active { 
+	border-bottom: 2px #26a69a solid !important;
+}
+
+.ember-power-select-trigger span {
+	padding-top: 8px;
+	margin-left: 0; 
+}
+
+.ember-power-select-placeholder,
+.ember-power-select-selected-item {
+	display: inline-block;
+	width: calc(100% - 60px);
+	height: 100%;
+	overflow: hidden;
+}
+
+span .ember-power-select-status-icon {
+	padding: 0 !important;
+}
+
+.ember-power-select-clear-btn {
+	font-size: 1.5rem;
+	color: #aaa;
+	right: 20px;
+	top: 0;	
+}
+
+.ember-power-select-clear-btn:before{
+	position: absolute;
+	content: '';
+	top: 0px;
+	right: -10px;
+	left: -10px;
+	bottom: 0px;
+	z-index: 40;
+}
+
+.ember-power-select-search-input {
+	border: none !important;
+	box-shadow: none !important;
+	margin: 0 !important;
+}
+
+.ember-power-select-dropdown {
+	border: none !important;
+	outline: 1px solid #ccc;
+	box-shadow: 0 5px 15px -5px rgba(0,0,0,.5);
+}
+
+.ember-power-select-option {
+	padding: 0.6em 1em;
+	color: #757575;
+}
+.ember-power-select-option[aria-current="true"] {
+	background-color: #2196f3;
+}
+
+.ember-power-select-placeholder {
+	color: #c9c9c9 !important;
+}
+
 /* Materialize Overwrites */
 
 .btn-floating {
@@ -255,7 +350,11 @@ body {
 	color: #26a69a;
 	line-height: 38px; 
 	font-size: 27px;
-	border:none;
+	border: none;
 }
 
 i.left { margin-right: 7px; }
+
+#addPlan .timepicker-modal {
+	top: 0 !important;
+}

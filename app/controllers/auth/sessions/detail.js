@@ -1,8 +1,12 @@
 /*global swal*/
 import Controller from '@ember/controller';
 import $ from 'jquery';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
+	fileTypes: ['Subir Archivo', 'Documento Drive'],
+	firebaseApp: service(),
+
 	actions: {
 		update () {
 			let session = this.get('model');
@@ -14,27 +18,59 @@ export default Controller.extend({
 				);
 			});
 		},
-		createPlan (name, url, session) {
-			let plan = this.store.createRecord('plan', {
-				name,
-				url,
-				session
-			});
-			session.get('plans').addObject(plan);
-			plan.save().then(() => {
-				session.save();
-			}).then(() => {	
-				this.setProperties({
-					name: null,
-					url: null
+		createPlan (name, startHour, endHour, fileType, url, session) {
+			if (fileType === 'Subir Archivo') {
+				let storageRef = this.get('firebaseApp');
+				let file = document.getElementById('wa').files[0];
+				let upload = storageRef.storage().ref().child(file.name).put(file);
+				upload.then(() => {
+					let plan = this.store.createRecord('plan', {
+						name,
+						session,
+						startHour,
+						endHour,
+						url: upload.snapshot.downloadURL
+					});
+					session.get('plans').addObject(plan);
+					plan.save().then(() => {
+						session.save();
+					}).then(() => {	
+						this.setProperties({
+							name: null,
+							url: null
+						});
+						$('#addPlan').modal('close');
+						swal(
+							'Planeación creada exitosamente :)',
+							'',
+							'success'
+						);
+					});
 				});
-				$('#addPlan').modal('close');
-				swal(
-					'Planeación creada exitosamente :)',
-					'',
-					'success'
-				);
-			});
+			} else {
+				let plan = this.store.createRecord('plan', {
+					name,
+					session,
+					startHour,
+					endHour,
+					url
+				});
+				session.get('plans').addObject(plan);
+				plan.save().then(() => {
+					session.save();
+				}).then(() => {	
+					this.setProperties({
+						name: null,
+						url: null
+					});
+					$('#addPlan').modal('close');
+					swal(
+						'Planeación creada exitosamente :)',
+						'',
+						'success'
+					);
+				});
+			}
 		},
 		deletePlan(plan) {
 			swal({

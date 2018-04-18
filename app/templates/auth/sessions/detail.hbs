@@ -1,7 +1,13 @@
 <div class="row no-margin no-padding">
-	<h4 class="no-margin-top col s6 no-padding">{{model.name}}</h4>
-	<div class="col s6">
-		<button class="btn right" {{action 'update'}}>Guardar Cambios</button>
+	<h4 class="no-margin-top col s5 no-padding">{{model.name}}</h4>
+	<div class="col s7">
+		<button class="btn right btn-rounded" {{action 'update'}}>Guardar Cambios</button>
+		{{#if model.hasDirtyAttributes}}
+			<div class="grey-text text-darken-1 inline-block right margin-right small-margin-top">
+				<i class="material-icons left yellow-text text-darken-1">warning</i>
+				Tienes cambios sin guardar
+			</div>
+		{{/if}}
 	</div>
 </div>
 <div class="divider"></div>
@@ -51,16 +57,42 @@
 </div>
 <div class="divider"></div>
 <br>
-<div class="row">
-	<h5 class="col s6">Planeaciones</h5>
-	<div class="col s6 right-align">
-	<a data-target="addPlan" class="modal-trigger btn waves-effect waves-light red">
-		<i class="material-icons left">add</i> Añadir Planeación
-	</a>
+<div class="row no-margin">
+	<h5 class="col s12 no-padding no-margin-top">Actividades</h5>
+</div>
+
+<div class="col s5 grey darken-2 rounded-border no-padding scroll">
+	{{#each model.plans as |plan|}}
+		<div class="small-padded white-text position-relative">
+			<p class="no-margin-top">
+				{{plan.name}}
+			</p>
+			<p class="no-margin-top">
+				<i class="material-icons left grey-text text-lighten-2">alarm</i> {{plan.startHour}} - {{plan.endHour}}
+			</p>
+			<div class="center-right">
+				<a class="clickable" href="{{plan.url}}">
+					<i class="material-icons grey-text text-lighten-2">file_download</i>
+				</a>
+				<a class="clickable" {{action 'deletePlan' plan}}>
+					<i class="material-icons grey-text text-lighten-2">delete_forever</i>
+				</a>
+			</div>
+		</div>
+		<div class="divider col s12"></div>
+	{{/each}}
+	<div class="small-padded white-text center">
+		<button data-target="addPlan" class="white-text modal-trigger transparent btn no-underline">
+			<i class="material-icons left">add</i> Añadir Planeación
+		</button>
+	</div>
+</div>
+<div class="col s7 padding-left">
+	<div class="col s12 grey">
 	</div>
 </div>
 
-<table class="striped">
+{{!-- <table class="striped">
 	<thead>
 		<tr>
 			<th>Nombre</th>
@@ -90,7 +122,7 @@
 			{{/jquery-wrapper}}
 		{{/each}}
 	</tbody>
-</table>
+</table> --}}
 
 {{#jquery-wrapper
 	query=".modal"
@@ -106,23 +138,76 @@
 						type='text'
 						value=name 
 						class='validate'
+						placeholder='Ej. Actividad 1'
 					}}
-					<label for="name">Nombre</label>
+					<label for="name" class="active">Nombre</label>
 				</div>
-				<div class="input-field col s12">
-					{{input 
-						id='url' 
-						type='text'
-						value=url 
-						class='validate'
+				<div class="input-field col s6 no-margin-top">
+					{{#jquery-wrapper
+						query='.timepicker'
+						method='timepicker'
 					}}
-					<label for="url">URL</label>
+						<label class="active">Hora de Inicio</label>
+						{{input
+							type='text'
+							class='timepicker'
+							placeholder="Hora de Inicio"
+							value=startHour
+						}}
+					{{/jquery-wrapper}}
 				</div>
+				<div class="input-field col s6 no-margin-top">
+					{{#jquery-wrapper
+						query='.timepicker'
+						method='timepicker'
+					}}
+						<label class="active">Hora de Fin</label>
+						{{input
+							type='text'
+							class='timepicker'
+							placeholder="Hora de Fin"
+							value=endHour
+						}}
+					{{/jquery-wrapper}}
+				</div>
+				<div class="input-field col s4">
+					<label class="active">Tipo de Archivo</label>
+					{{#power-select
+						selected=fileType
+						options=fileTypes
+						searchEnabled=false
+						placeholder="Selecciona tipo de archivo"
+						onchange=(action (mut fileType))
+						as |type|
+					}}
+						{{type}}
+					{{/power-select}}
+				</div>
+				{{#if (eq fileType 'Documento Drive')}}
+					<div class="input-field col s8">
+						<label class="active">URL</label>
+						{{input
+							type="text"
+							placeholder="URL"
+							value=url
+						}}
+					</div>
+				{{else if (eq fileType 'Subir Archivo')}}
+					<div class="file-field input-field col s8">
+						<div class="btn">
+							<span>File</span>
+							{{input type="file" id="wa"}}
+						</div>
+						<div class="file-path-wrapper">
+							{{input class="file-path validate" type="text"}}
+						</div>
+					</div>
+				{{/if}}
 			</form>
 		</div>
 		<div class="modal-footer">
 			<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
-			<a href="#!" class="waves-effect waves-green btn-flat" {{action 'createPlan' name url model}}>Crear</a>
+			<a href="#!" class="waves-effect waves-green btn-flat" {{action 'createPlan' name startHour endHour fileType url model}}>Crear</a>
 		</div>
 	</div>
 {{/jquery-wrapper}}

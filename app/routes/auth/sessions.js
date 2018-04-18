@@ -11,7 +11,7 @@ export default Route.extend({
 
 	setupController (controller, model) {
 		this._super(...arguments);
-		let date = moment().format('D/M/YYYY');
+		let date = this.get('dataService.date').format('D/M/YYYY');
 		let filteredData = model.filterBy('date', date);
 		this.set('dataService.data', filteredData);
 	}
