@@ -54,6 +54,7 @@ body {
 .no-margin-top { margin-top: 0 !important; }
 .no-margin-bottom { margin-bottom: 0 !important; }
 .margin-right { margin-right: 1em; }
+.small-margin-bottom { margin-bottom: .5em; }
 
 .small-margin-top { margin-top: .4em; }
 .small-padding-top { padding-top: .5em !important; }
@@ -337,6 +338,11 @@ span .ember-power-select-status-icon {
 .ember-power-select-placeholder {
 	color: #c9c9c9 !important;
 }
+
+/* iFrames */
+
+.doc-preview { 	height: 57vh; }
+.doc-preview iframe { border: none; }
 
 /* Materialize Overwrites */
 

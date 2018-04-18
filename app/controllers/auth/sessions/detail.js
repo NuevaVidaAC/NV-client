@@ -6,8 +6,12 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
 	fileTypes: ['Subir Archivo', 'Documento Drive'],
 	firebaseApp: service(),
+	docUrl: null,
 
 	actions: {
+		setDocUrl (url) {
+			this.set('docUrl', url);
+		},
 		update () {
 			let session = this.get('model');
 			session.save().then(() => {
