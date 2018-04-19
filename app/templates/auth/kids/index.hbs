@@ -1,0 +1,91 @@
+<div class="nv-card">
+	<div class="row no-margin no-padding">
+		<h4 class="no-margin-top col s5 no-padding">Niños</h4>
+		<div class="input-field col s5 no-margin search-input valign-wrapper">
+			<i class="material-icons prefix grey-text text-darken-1">search</i>
+			{{input 
+				type="text" 
+				class="no-underline no-margin-bottom"
+				placeholder="Buscar..."
+			}}
+		</div>
+		<div class="col s2">
+			<a data-target="addKid" class="right modal-trigger btn waves-effect waves-light">
+				Añadir Niño
+			</a>
+		</div>
+	</div>
+	<div class="divider"></div>
+
+	<table class="striped">
+		<thead>
+			<tr>
+				<th>Foto</th>
+				<th>Nombre</th>
+				<th>Edad</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each model as |kid|}}
+				<tr class="table-small-padding">
+					<td><div class="with-background circle circle-fixed" style="{{background-image kid.photo}}"></div></td>
+					<td>{{#link-to 'auth.kids.detail' kid.id}}{{kid.fullName}}{{/link-to}}</td>
+					<td>{{kid.age}}</td>
+					<td>
+						<a class="clickable" {{action 'deleteKid' kid}}>
+						<i class="material-icons small right">delete_forever</i>
+						</a>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+
+	{{#jquery-wrapper
+		query=".modal"
+		method="modal"
+	}}
+		<div id="addKid" class="modal">
+			<div class="modal-content">
+				<h4>Crear Niño</h4>
+				<form class="row">
+					<div class="input-field col s6">
+						{{input 
+							id='name' 
+							value=name 
+							class='validate'
+						}}
+						<label for="name">Nombre</label>
+					</div>
+					<div class="input-field col s6">
+						{{input 
+							id='lastName' 
+							value=lastName 
+							class='validate'
+						}}
+						<label for="lastName">Apellido</label>
+					</div>
+					<div class="input-field col s6">
+						{{material-date-input
+							value=dob
+						}}
+						<label class="active">Fecha de Nacimiento</label>
+					</div>
+					{{!-- <div class="input-field col s12">
+						{{input 
+							id='password' 
+							type='password' 
+							value=pass
+							class='validate'
+						}}
+						<label for="password">Contraseña</label>
+					</div> --}}
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+				<a href="#!" class="waves-effect waves-green btn-flat" {{action 'createKid' name lastName dob}}>Crear</a>
+			</div>
+		</div>
+	{{/jquery-wrapper}}
+</div>

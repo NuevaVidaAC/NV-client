@@ -17,6 +17,17 @@
 			{{/link-to}}
 		</li>
 		<div class="divider"></div>
+		<li>
+			{{#link-to 'auth.kids.index'}}
+				<br>
+				<i class="material-icons">face</i>
+				<br>
+				Niños
+				<br>
+				<br>
+			{{/link-to}}
+		</li>
+		<div class="divider"></div>
 		{{#if session.currentUser.isAdmin}}
 			<li>
 				{{#link-to 'auth.admin.users'}}

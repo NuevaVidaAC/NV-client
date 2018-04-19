@@ -14,6 +14,9 @@ Router.map(function() {
       this.route('list', { path: '/' });
       this.route('detail', { path: '/:id' });
     });
+    this.route('kids', function() {
+      this.route('detail', { path:'/:id' });
+    });
     this.route('admin', function() {
       this.route('users', function() {});
       this.route('plans');

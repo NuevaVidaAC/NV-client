@@ -74,6 +74,11 @@ body {
 	border-radius: 50%;	
 }
 
+.circle-fixed {
+	width: 60px;
+	height: 60px;
+}
+
 .center-right {
 	position: absolute;
 	right: 5px;
@@ -344,6 +349,12 @@ span .ember-power-select-status-icon {
 .doc-preview { 	height: 57vh; }
 .doc-preview iframe { border: none; }
 
+/* table */
+
+.table-small-padding {
+	padding: 5px !important;
+}
+
 /* Materialize Overwrites */
 
 .btn-floating {
@@ -362,5 +373,9 @@ span .ember-power-select-status-icon {
 i.left { margin-right: 7px; }
 
 #addPlan .timepicker-modal {
+	top: 0 !important;
+}
+
+#addKid .datepicker-modal {
 	top: 0 !important;
 }
