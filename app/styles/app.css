@@ -394,4 +394,5 @@ i.left { margin-right: 7px; }
 
 .datepicker-modal {
 	z-index: 1014 !important;
+	/*overflow: hidden;*/
 }
