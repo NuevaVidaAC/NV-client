@@ -18,7 +18,9 @@ export default Component.extend({
 			clear: 'borrar',
 			done: 'aceptar'
 		},
-		format: 'dd/mm/yyyy'
+		format: 'dd/mm/yyyy',
+		yearRange: [1998, 2024],
+		container: 'body'
 	},
 
 	didInsertElement () {

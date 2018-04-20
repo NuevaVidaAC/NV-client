@@ -1,1 +1,52 @@
-{{outlet}}
+<div class="row full-height">
+	<div class="nv-card col s8 position-relative">
+		{{#link-to 'auth.kids.index' class="col s12"}}<i class="material-icons left">chevron_left</i> Volver{{/link-to}}
+		<div class="col s12 no-padding center-circle">
+			<div class="with-background circle circle-large" style="{{background-image model.photo}}"></div>
+		</div>
+		<br>
+		<br>
+		<br>
+		<div class="input-field col s12">
+			<label class="active">Nombre(s)</label>
+			{{input
+				value=model.name
+			}}
+		</div>
+		<div class="input-field col s12">
+			<label class="active">Apellidos</label>
+			{{input
+				value=model.lastName
+			}}
+		</div>
+		<div class="input-field col s6">
+			<label class="active">Fecha de Nacimiento</label>
+			{{material-date-input
+				value=model.dob
+			}}
+		</div>
+		<div class="input-field col s6">
+			<label class="active">Edad</label>
+			{{input
+				value=model.age
+			}}
+		</div>
+		<div class="input-field col s12">
+			<label class="active">Alergias</label>
+			{{input
+				value=model.alergies
+			}}
+		</div><div class="input-field col s12">
+			<label class="active">Enfermedades</label>
+			{{input
+				value=model.diseases
+			}}
+		</div>
+	</div>
+	<div class="right-top-card nv-card">
+		<h5>Sesiones</h5>
+	</div>
+	<div class="right-down-card nv-card">
+		<h5>Tutores</h5>
+	</div>
+</div>

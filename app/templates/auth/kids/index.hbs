@@ -28,7 +28,7 @@
 		<tbody>
 			{{#each model as |kid|}}
 				<tr class="table-small-padding">
-					<td><div class="with-background circle circle-fixed" style="{{background-image kid.photo}}"></div></td>
+					<td><div class="with-background circle circle-small" style="{{background-image kid.photo}}"></div></td>
 					<td>{{#link-to 'auth.kids.detail' kid.id}}{{kid.fullName}}{{/link-to}}</td>
 					<td>{{kid.age}}</td>
 					<td>

@@ -69,15 +69,7 @@ body {
 
 .clickable { cursor: pointer; }
 
-.circle {
-	border: 1px #ddd solid;
-	border-radius: 50%;	
-}
 
-.circle-fixed {
-	width: 60px;
-	height: 60px;
-}
 
 .center-right {
 	position: absolute;
@@ -88,6 +80,29 @@ body {
 .rounded-border { border-radius: 5px; }
 
 .scroll { overflow: auto; }
+
+/* Circles */
+
+.circle {
+	border: 1px #ddd solid;
+	border-radius: 50%;	
+}
+
+.circle-small {
+	width: 60px;
+	height: 60px;
+}
+
+.circle-large {
+	width: 200px;
+	height: 200px;
+}
+
+.center-circle {
+	margin-left: calc(50% - 100px) !important;
+	max-width: 200px; 
+	overflow: hidden;
+}
 
 /* Navbar */
 
@@ -372,10 +387,11 @@ span .ember-power-select-status-icon {
 
 i.left { margin-right: 7px; }
 
-#addPlan .timepicker-modal {
+.modal .timepicker-modal {
 	top: 0 !important;
+	z-index: 1014;
 }
 
-#addKid .datepicker-modal {
-	top: 0 !important;
+.datepicker-modal {
+	z-index: 1014 !important;
 }

@@ -10,7 +10,7 @@
 	<div class="divider col s12"></div>
 </div>
 {{#if dataService.data}}
-	<button class="btn waves-effect right waves-light btn-rounded btn-add"><i class="material-icons left">add</i> Agregar</button>
+	<button class="btn waves-effect right waves-light btn-rounded btn-add modal-trigger" data-target="addSession"><i class="material-icons left">add</i> Agregar</button>
 	<div class="row no-margin no-padding">
 		{{#each dataService.data as |session|}}
 			<div class="col s9 no-padding">
@@ -34,6 +34,45 @@
 	<div class="full-width center padded-card">
 		<h5 class="grey-text text-darken-1">No hay sesiones registradas para este día   :(</h5>
 		<br>
-		<button class="btn waves-effect waves-light btn-rounded"><i class="material-icons left">add</i> Agregar</button>
+		<button class="btn waves-effect waves-light btn-rounded modal-trigger" data-target="addSession"><i class="material-icons left">add</i> Agregar</button>
 	</div>
 {{/if}}
+
+{{#jquery-wrapper
+	query=".modal"
+	method="modal"
+}}
+	<div id="addSession" class="modal">
+		<div class="modal-content">
+			<h4>Crear Sesión</h4>
+			<form class="row">
+				<div class="input-field col s6">
+					{{input 
+						id='name' 
+						type='text'
+						value=name 
+						class='validate'
+					}}
+					<label for="name">Name</label>
+				</div>
+				<div class="input-field col s6">
+					{{input 
+						id='location' 
+						value=location 
+						class='validate'
+					}}
+					<label for="location">Lugar</label>
+				</div>
+				<div class="input-field col s6">
+					{{material-date-input
+						value=date
+					}}
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+			<a href="#!" class="waves-effect waves-green btn-flat" {{action 'createSession' name location date}}>Crear</a>
+		</div>
+	</div>
+{{/jquery-wrapper}}
