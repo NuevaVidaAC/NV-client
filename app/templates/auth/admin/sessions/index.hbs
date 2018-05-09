@@ -10,7 +10,7 @@
 			}}
 		</div>
 		<div class="col s2">
-			<a data-target="addSession" class="right modal-trigger btn waves-effect waves-light">
+			<a data-target="addSession" class="right modal-trigger btn waves-effect waves-light {{unless session.currentUser.isAdmin 'hide'}}">
 				Añadir Sesión
 			</a>
 		</div>

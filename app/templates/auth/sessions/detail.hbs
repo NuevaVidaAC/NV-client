@@ -1,7 +1,7 @@
 <div class="row no-margin no-padding">
 	<h4 class="no-margin-top col s5 no-padding">{{model.name}}</h4>
 	<div class="col s7">
-		<button class="btn right btn-rounded" {{action 'update'}}>Guardar Cambios</button>
+		<button class="btn right btn-rounded {{unless session.currentUser.isAdmin 'hide'}}" {{action 'update'}}>Guardar Cambios</button>
 		{{#if model.hasDirtyAttributes}}
 			<div class="grey-text text-darken-1 inline-block right margin-right small-margin-top">
 				<i class="material-icons left yellow-text text-darken-1">warning</i>
@@ -16,13 +16,16 @@
 		<label for="location" class="active">Lugar</label>
 		{{input
 			id='location'
+			class='black-text'
 			value=model.location
+			disabled=(not session.currentUser.isAdmin)
 		}}
 	</div>
 	<div class="input-field col s6">
 		<label for="location" class="active">Fecha</label>
 		{{material-date-input
 			value=model.date
+			disabled=(not session.currentUser.isAdmin)
 		}}
 	</div>
 	<div class="input-field col s6">
@@ -34,8 +37,9 @@
 			{{input
 				type='text'
 				placeholder='Hora de inicio'
-				class='timepicker'
+				class='timepicker black-text'
 				value=model.startHour
+				disabled=(not session.currentUser.isAdmin)
 			}}
 		{{/jquery-wrapper}}
 	</div>
@@ -48,7 +52,8 @@
 			{{input
 				type='text'
 				placeholder='Hora de fin'
-				class='timepicker'
+				class='timepicker black-text'
+				disabled=(not session.currentUser.isAdmin)
 				value=model.endHour
 			}}
 		{{/jquery-wrapper}}
@@ -59,9 +64,9 @@
 	<h5 class="col s12 no-padding no-margin-top">Actividades</h5>
 </div>
 
-<div class="col s5 grey darken-2 rounded-border no-padding scroll position-relative">
+<div class="col s5 grey darken-3 rounded-border no-padding scroll position-relative">
 	{{#each model.plans as |plan|}}
-		<div class="small-padded white-text position-relative" {{action 'setDocUrl' plan.url on='click'}}>
+		<div class="small-padded white-text position-relative {{if (eq plan.url docUrl) 'grey darken-2'}} clickable" {{action 'setDocUrl' plan.url on='click'}}>
 			<h6 class="no-margin-top">
 				{{plan.name}}
 			</h6>
@@ -97,38 +102,6 @@
 		{{/if}}
 	</div>
 </div>
-
-{{!-- <table class="striped">
-	<thead>
-		<tr>
-			<th>Nombre</th>
-			<th>URL</th>
-		</tr>
-	</thead>
-	<tbody>
-		{{#each model.plans as |plan|}}
-			<tr>
-				<td>
-					<a data-target="planFrame" class="modal-trigger clickable">
-						{{plan.name}}
-					</a>
-				</td>
-				<td>{{plan.url}}</td>
-				<td><a class="clickable" {{action 'deletePlan' plan}}><i class="material-icons">delete_forever</i></a></td>
-			</tr>
-			{{#jquery-wrapper
-				query=".modal"
-				method="modal"
-			}}
-				<div id="planFrame" class="modal">
-					<div class="modal-content no-padding no-margin">
-						<iframe src="https://docs.google.com/viewer?srcid={{plan.urlId}}&pid=explorer&efh=false&a=v&chrome=false&embedded=true" style="width: 100%; height: 1000px;"></iframe>
-					</div>
-				</div>
-			{{/jquery-wrapper}}
-		{{/each}}
-	</tbody>
-</table> --}}
 
 {{#jquery-wrapper
 	query=".modal"
@@ -202,7 +175,7 @@
 					<div class="file-field input-field col s8">
 						<div class="btn">
 							<span>File</span>
-							{{input type="file" id="wa"}}
+							{{input type="file" id="file"}}
 						</div>
 						<div class="file-path-wrapper">
 							{{input class="file-path validate" type="text"}}

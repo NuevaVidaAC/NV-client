@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
 	dataService: service(),
+	session: service(),
 
 	actions: {
 		createSession (name, location, date) {

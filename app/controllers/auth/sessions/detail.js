@@ -6,6 +6,7 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
 	fileTypes: ['Subir Archivo', 'Documento Drive'],
 	firebaseApp: service(),
+	session: service(),
 	docUrl: null,
 
 	actions: {
@@ -25,7 +26,7 @@ export default Controller.extend({
 		createPlan (name, startHour, endHour, fileType, url, session) {
 			if (fileType === 'Subir Archivo') {
 				let storageRef = this.get('firebaseApp');
-				let file = document.getElementById('wa').files[0];
+				let file = document.getElementById('file').files[0];
 				let upload = storageRef.storage().ref().child(file.name).put(file);
 				upload.then(() => {
 					let plan = this.store.createRecord('plan', {
@@ -35,12 +36,16 @@ export default Controller.extend({
 						endHour,
 						url: upload.snapshot.downloadURL
 					});
+					console.log(plan);
 					session.get('plans').addObject(plan);
 					plan.save().then(() => {
 						session.save();
 					}).then(() => {	
 						this.setProperties({
 							name: null,
+							startHour: null,
+							endHour: null,
+							fileType: null,
 							url: null
 						});
 						$('#addPlan').modal('close');

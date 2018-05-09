@@ -10,7 +10,7 @@
 	<div class="divider col s12"></div>
 </div>
 {{#if dataService.data}}
-	<button class="btn waves-effect right waves-light btn-rounded btn-add modal-trigger" data-target="addSession"><i class="material-icons left">add</i> Agregar</button>
+	<button class="btn waves-effect right waves-light btn-rounded btn-add modal-trigger {{unless session.currentUser.isAdmin 'hide'}}" data-target="addSession"><i class="material-icons left">add</i> Agregar</button>
 	<div class="row no-margin no-padding">
 		{{#each dataService.data as |session|}}
 			<div class="col s9 no-padding">
@@ -34,7 +34,7 @@
 	<div class="full-width center padded-card">
 		<h5 class="grey-text text-darken-1">No hay sesiones registradas para este día   :(</h5>
 		<br>
-		<button class="btn waves-effect waves-light btn-rounded modal-trigger" data-target="addSession"><i class="material-icons left">add</i> Agregar</button>
+		<button class="btn waves-effect waves-light btn-rounded modal-trigger {{unless session.currentUser.isAdmin 'hide'}}" data-target="addSession"><i class="material-icons left">add</i> Agregar</button>
 	</div>
 {{/if}}
 
