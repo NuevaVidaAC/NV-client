@@ -10,6 +10,10 @@ export default Route.extend({
 			this.transitionTo('auth.home');
 		}
 	},
+	
+	model () {
+		return this.store.findAll('project');
+	},
 
 	actions: {
 		login(email, password) {

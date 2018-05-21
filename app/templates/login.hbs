@@ -1,28 +1,57 @@
 <div class="row">
 	{{#if register}}
 		<form class="login-form card col m4 offset-m4 max-height">
-			<img src="/img/logo-nv.svg">
-			<br>
-			<br>
+			<h5 class="no-margin grey-text text-darken-2">Registro</h5>
 			<br>
 			<div class="input-field">
 				{{input
-					id='email'
-					value=email
+					value=name
+					type='text'
+					id='name'
 				}}
-				<label for="#email">Correo Electrónico</label>
+				<label for="#name">Nombre(s)</label>
 			</div>
 			<div class="input-field">
 				{{input
-					value=password
-					type='password'
+					value=lastName
+					type='text'
+					id='lName'
+				}}
+				<label for="#lName">Apellidos</label>
+			</div>
+			<div class="input-field">
+				{{input
+					id='email'
+					type='email'
+					value=newEmail
+				}}
+				<label for="#email">Correo Electrónico</label>
+			</div>
+			<div class="left-align input-field small-padding-bottom">
+				{{#power-select
+					options=model
+					placeholder='Selecciona un Proyecto'
+					selected=project
+					onchange=(action (mut project))
+					noMatchesMessage='No se encontraron resultados'
+					searchField='name'
+					as |project|
+				}}
+					{{project.name}}
+				{{/power-select}}
+			</div>
+			<div class="input-field right-icon">
+				{{input
+					value=newPassword
+					type=(if showPass 'text' 'password')
 					id='pass'
 				}}
+				<i class="material-icons position-absolute clickable" {{action 'showPass' on='click'}}>{{if showPass 'visibility_off' 'visibility'}}</i>
 				<label for="#pass">Contraseña</label>
 			</div>
 			<br>
 			<br>
-			<button class="btn waves-effect btn-large btn-rounded" {{action 'login' email password}}>Registrar</button>
+			<button type="submit" class="btn waves-effect btn-large btn-rounded" {{action 'createUser'newEmail newPassword name lastName project}}>Registrar</button>
 			<br>
 			<br>
 			<a class="teal-text clickable" {{action 'register'}}>Inicia Sesión</a>
@@ -30,7 +59,6 @@
 	{{else}}
 		<form class="login-form card col m4 offset-m4 max-height">
 			<img src="/img/logo-nv.svg">
-			<br>
 			<br>
 			<br>
 			<div class="input-field">

@@ -27,7 +27,7 @@ body {
 .with-background {
     background-position: center;
     background-size: cover;
-    background-color: #555;
+    background-color: #aaa;
 }
 
 .behind { z-index: -1 !important }
@@ -214,6 +214,17 @@ body {
 	padding: 0 .5em;
 }
 
+.right-icon { 
+	position: relative;
+}
+
+.right-icon i {
+	position: absolute;
+	top: 12px;
+	color: #9e9e9e;
+	right: 5px;
+}
+
 /* Power-Calendar */
 
 .ember-power-calendar-weekdays { margin-bottom: .7em; }
@@ -303,11 +314,9 @@ body {
 }
 
 .ember-power-select-trigger span {
-	padding-top: 8px;
 	margin-left: 0; 
 }
 
-.ember-power-select-placeholder,
 .ember-power-select-selected-item {
 	display: inline-block;
 	width: calc(100% - 60px);
@@ -353,11 +362,12 @@ span .ember-power-select-status-icon {
 	color: #757575;
 }
 .ember-power-select-option[aria-current="true"] {
-	background-color: #2196f3;
+	background-color: #26a69a;
+	color: white;
 }
 
 .ember-power-select-placeholder {
-	color: #c9c9c9 !important;
+	color: #9e9e9e !important;
 }
 
 /* iFrames */
