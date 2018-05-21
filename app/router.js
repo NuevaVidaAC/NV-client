@@ -19,6 +19,7 @@ Router.map(function() {
     });
     this.route('admin', function() {
       this.route('users', function() {});
+      this.route('projects', function() {});
       this.route('plans');
       this.route('sessions', function() {
         this.route('detail', { path: '/:id' });

@@ -6,5 +6,7 @@ export default DS.Model.extend({
 	date: 	 		DS.attr('string', { defaultValue: null}),
 	startHour: 		DS.attr('string', { defaultValue: null}),
 	endHour: 		DS.attr('string', { defaultValue: null}),
-	plans: 			DS.hasMany( { async: true })
+
+	plans: 			DS.hasMany({ async: true }),
+	project: 		DS.belongsTo('project')
 });

@@ -1,6 +1,5 @@
 /*global swal*/
 import Controller from '@ember/controller';
-import $ from 'jquery';
 import RSVP from 'rsvp';
 import { inject as service } from '@ember/service';
 import moment from 'moment';

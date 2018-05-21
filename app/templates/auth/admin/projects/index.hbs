@@ -1,0 +1,65 @@
+<div class="nv-card">
+	<div class="row no-margin no-padding">
+		<h4 class="no-margin-top col s5 no-padding">Proyectos</h4>
+		<div class="input-field col s5 no-margin search-input valign-wrapper">
+			<i class="material-icons prefix grey-text text-darken-1">search</i>
+			{{input 
+				type="text" 
+				class="no-underline no-margin-bottom"
+				placeholder="Buscar..."
+			}}
+		</div>
+		<div class="col s2">
+			<a data-target="addUser" class="right modal-trigger btn waves-effect waves-light">
+				Añadir Proyecto
+			</a>
+		</div>
+	</div>
+	<div class="divider"></div>
+
+	<table class="striped">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each model as |project|}}
+				<tr>
+					<td>{{project.name}}</td>
+					<td class="right">
+						<a class="clickable"><i class="material-icons">edit</i></a>
+						&nbsp;
+						<a class="clickable" {{action 'deleteProject' project}}><i class="material-icons">delete_forever</i></a>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+
+	{{#jquery-wrapper
+		query=".modal"
+		method="modal"
+	}}
+		<div id="addUser" class="modal">
+			<form>
+				<div class="modal-content">
+					<h4 class="small-padding-bottom">Crear Proyecto</h4>
+					<div class="input-field">
+						{{input 
+							id='name' 
+							value=name 
+							class='validate'
+							autofocus=true
+						}}
+						<label for="name">Nombre</label>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+					<button type="submit" class="waves-effect waves-green btn-flat" {{action 'createProject' name}}>Crear</button>
+				</div>
+			</form>
+		</div>
+	{{/jquery-wrapper}}
+</div>

@@ -1,4 +1,6 @@
+/* global swal */
 import Controller from '@ember/controller';
+import $ from 'jquery';
 import { inject as service } from '@ember/service';
 
 export default Controller.extend({

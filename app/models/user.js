@@ -7,6 +7,8 @@ export default DS.Model.extend({
 	email: 			DS.attr('string'),
 	isAdmin: 		DS.attr('boolean', { default: false }),
 
+	project: 		DS.belongsTo('project'),
+
 	fullName: computed('name', 'lastName', function() {
 		let name = this.get('name');
 		let lastName = this.get('lastName');
