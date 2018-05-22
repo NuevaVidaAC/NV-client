@@ -31,14 +31,21 @@
 				{{#power-select
 					options=model
 					placeholder='Selecciona un Proyecto'
-					selected=project
-					onchange=(action (mut project))
+					onchange=(action 'addProject')
 					noMatchesMessage='No se encontraron resultados'
 					searchField='name'
 					as |project|
 				}}
 					{{project.name}}
 				{{/power-select}}
+			</div>
+			<div class="left-align">
+				{{#each projects as |project|}}
+					<div class="chip">
+						{{project.name}}
+						<i class="chip-close material-icons" {{action 'removeProject' project on='click'}}>close</i>
+					</div>
+				{{/each}}
 			</div>
 			<div class="input-field right-icon">
 				{{input
@@ -51,7 +58,7 @@
 			</div>
 			<br>
 			<br>
-			<button type="submit" class="btn waves-effect btn-large btn-rounded" {{action 'createUser'newEmail newPassword name lastName project}}>Registrar</button>
+			<button type="submit" class="btn waves-effect btn-large btn-rounded" {{action 'createUser'newEmail newPassword name lastName projects}}>Registrar</button>
 			<br>
 			<br>
 			<a class="teal-text clickable" {{action 'register'}}>Inicia Sesión</a>

@@ -66,18 +66,18 @@
 
 <div class="col s5 grey darken-3 rounded-border no-padding scroll position-relative">
 	{{#each model.plans as |plan|}}
-		<div class="small-padded white-text position-relative {{if (eq plan.url docUrl) 'grey darken-2'}} clickable" {{action 'setDocUrl' plan.url on='click'}}>
-			<h6 class="no-margin-top">
+		<div class="small-padded white-text position-relative {{if (eq plan.url docUrl) 'grey darken-2'}}">
+			<h6 class="no-margin-top clickable underlined" {{action 'setDocUrl' plan.url on='click'}}>
 				{{plan.name}}
 			</h6>
 			<p class="no-margin-top">
 				<i class="material-icons left grey-text text-lighten-2">alarm</i> {{plan.startHour}} - {{plan.endHour}}
 			</p>
 			<div class="center-right">
-				<a class="clickable" href="{{plan.url}}">
+				<a class="clickable very-on-top" href="{{plan.url}}">
 					<i class="material-icons grey-text text-lighten-2">file_download</i>
 				</a>
-				<a class="clickable" {{action 'deletePlan' plan}}>
+				<a class="clickable {{unless session.currentUser.isAdmin 'hide'}}" {{action 'deletePlan' plan}}>
 					<i class="material-icons grey-text text-lighten-2">delete_forever</i>
 				</a>
 			</div>

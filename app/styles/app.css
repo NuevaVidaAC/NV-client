@@ -19,6 +19,8 @@ body {
 	bottom: 30px;
 }
 
+.underlined { text-decoration: underline; }
+
 .no-underline { 
 	border-bottom: none !important; 
 	box-shadow: none !important;
@@ -185,6 +187,16 @@ body {
 	padding: 3em 3em !important;
 	overflow: auto;
 	text-align: center;
+}
+
+/* chips */
+
+.chip-close {
+	cursor: pointer;
+    float: right;
+    font-size: 16px !important;
+    line-height: 32px !important;
+    padding-left: 8px;
 }
 
 /* Buttons */

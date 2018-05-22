@@ -49,7 +49,7 @@ export default Controller.extend({
 			let date = moment(day).format('D/M/YYYY');
 			let filteredData = data.filterBy('date', date);
 			this.set('dataService.data', filteredData);
-			this.transitionToRoute('/sessions/');
+			this.transitionToRoute('auth.sessions');
 		} 
 	}
 });
