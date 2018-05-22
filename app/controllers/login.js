@@ -46,12 +46,10 @@ export default Controller.extend({
 		addProject (project) {
 			let projects = this.get('projects');
 			projects.addObject(project);
-			console.log(projects);
 		},
 		removeProject (project) {
 			let projects = this.get('projects');
 			projects.removeObject(project);
-			console.log(projects);
 		}
 	}
 });
