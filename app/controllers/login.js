@@ -1,3 +1,4 @@
+/* global swal */
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 
@@ -26,7 +27,6 @@ export default Controller.extend({
 				projects.forEach((project) => project.get('volunteers').addObject(user));
 				return user.save().then(() => {
 					projects.forEach((project) => project.save());
-					$('#addUser').modal('close');
 					swal(
 						'Registro Completado :)',
 						'',
